@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="game.css">
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <div class="part1">
+            <h1>lets play game</h1>
+            <button>Game Start</button>
+        </div>
+
+        <div class="part2">
+            <div>
+                <h1>Choose your favourite Player</h1>
+            </div>
+            <img src="ironman.png" alt="">
+            <img src="betman.png" alt="">
+            <img src="captionamerica.png" alt="">
+        </div>
+
+        <div class="part3">
+            <div class="displayflex">
+                <div class="time">
+                    <p>time <span>0</span></p>
+                </div>
+                <div class="score">
+                    <p>score <span>0</span></p>
+                </div>
+                <div class="photos">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    let button = document.querySelector("button")
+    let part1 = document.querySelector(".part1")
+    let part2 = document.querySelector(".part2")
+    let part3 = document.querySelector(".part3")
+    let image = document.querySelectorAll(".part2 img")
+    let timeplus = document.querySelector(".time span")
+    let scoreplus = document.querySelector(".score span")
+    let photos = document.querySelector("photos")
+
+
+    button.onclick = () => {
+        part1.style.display = 'none'
+        part2.style.display = 'block'
+        part2.style.display = 'flex'
+    }
+
+    for (let i = 0; i < image.length; i++) {
+        image[i].onclick = () => {
+            part2.style.display = 'none'
+            part3.style.display = 'block'
+            part3.style.display = 'flex'
+
+
+            timeout()
+            scorestart()
+
+            let y = three.clientHight
+            let x = three.clientWidth
+
+            setInterval(() => {
+                let left = Math.random() * (x - 50)
+                let top = Math.random() * (y - 50)
+                console.log(left)
+
+                let newImg = document.createElement('img')
+                if (i == 0) {
+                    newImg.src = './image/ironman.png'
+                }
+                if (i == 1) {
+                    newImg.src = './image/betman.png'
+                }
+                if (i == 2) {
+                    newImg.src = './image/captionamerica.png'
+                }
+
+                photos.insertAdjacentElement('beforeed', newImg)
+                newImg.style.left = left + 'px'
+                newImg.style.top = top = 'px'
+
+                newImg.setAttribute('onclick', 'tab(this)')
+            }, 600);
+        }
+    }
+
+    function Timeout() {
+        setInterval(() => {
+            if (timeplus.innerHTML < 30) {
+                timeplus.innerHTML = Number(timeplus.innerHTML) + 1
+            }
+            else {
+                alert('Time Out.....\n' + 'your score is....' + timeplus.innerHTML)
+            }
+        }, 1000)
+    }
+
+    function scorestart() {
+        scoreplus.innerHTML = 0
+    }
+    function tab(img) {
+        img.remove()
+        scoreplus.innerHTML = Number(scoreplus.innerHTML) + 1
+    }
+
+
+
+
+
+</script>
+
+</html>
